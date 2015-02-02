@@ -10,4 +10,9 @@ class Project < ActiveRecord::Base
 			project.destroy
 		end
 	end
+
+	def self.last_created_projects(n)
+		# limit(n).order("created_at") --> MORE PRO! CHECK THIS AFTER!!
+		Project.limit(n).order("created_at")
+	end
 end
