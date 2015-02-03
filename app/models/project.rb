@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+	has_many :entries
+	
 	def self.iron_find(where_clause)
 		where(where_clause)
 	end
