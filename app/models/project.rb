@@ -1,5 +1,8 @@
 class Project < ActiveRecord::Base
 	has_many :entries
+	validates :name, presence: true, uniqueness: true, length: { maximum: 30,
+   too_long: "%{count} characters is the maximum allowed" }, format: { with: /\A[a-zA-Z0-9]+\z/,
+   message: "only allows letters and numbers" }
 	
 	def self.iron_find(where_clause)
 		where(where_clause)
